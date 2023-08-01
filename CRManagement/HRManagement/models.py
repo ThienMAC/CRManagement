@@ -5,7 +5,7 @@ class Employee(models.Model):
     emp_Firstname=models.CharField(max_length=200)
     emp_Lastname=models.CharField(max_length=500)
     emp_Dob=models.DateField()
-    emp_Gender=models.BooleanField()
+    emp_Gender=models.BooleanField(default=0)
     created_date=models.DateTimeField(auto_now_add=True, blank=True)
     created_by=models.IntegerField(default=0)
     modified_date=models.DateTimeField(auto_now_add=True, blank=True)

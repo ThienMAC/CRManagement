@@ -1,54 +1,105 @@
 {% extends 'HRManagement/hr_main_template.html' %} {% load static %} {% block content %}
 
 <div class="card-content">
-    <form method="get">
+  <form method="POST">
+    {% csrf_token %}
+    <div class="field">
+      <label class="label">Thêm mới nhân viên</label>
       <div class="field">
-        <label class="label">Thêm mới nhân viên</label>
+        <label class="label">First name</label>
         <div class="field-body">
-          <div class="field">
+          <div class="field grouped multiline">
             <div class="control icons-left">
-                {{form.emp_Firstname}}
-                <span class="icon left"><i class="mdi mdi-account"></i></span>
+              <input class="input" placeholder="Enter your first name" name="emp_Firstname" required>
+              <span class="icon left"><i class="mdi mdi-account"></i></span>
             </div>
-          </div>    
-          <div class="field">
-            <div class="control icons-left">
-                {{form.emp_Lastname}}
-                <span class="icon left"><i class="mdi mdi-account"></i></span>
-            </div>
-          </div>    
-          <div class="field">
-            <div class="control icons-left">
-                {{form.emp_Dob}}
-            </div>
-          </div>    
-          <div class="field">
-            <label class="label">Gender</label>
-            <div class="field-body">
-              <div class="field grouped multiline">
-                <div class="control">
-                  <label class="checkbox">
-                    {{form.emp_Gender}}
-                    <span class="check"></span>
-                    <span class="control-label" name="male">Lorem</span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div> 
-        </div>
-      <div class="field grouped">
-        <div class="control">
-          <button type="submit" class="button green">
-            Submit
-          </button>
-        </div>
-        <div class="control">
-          <button type="reset" class="button red">
-            Reset
-          </button>
+          </div>
         </div>
       </div>
-    </form>
+      <div class="field">
+        <label class="label">Last name</label>
+        <div class="field-body">
+          <div class="field grouped multiline">
+            <div class="control icons-left">
+              <input class="input" placeholder="Enter your last name" name="emp_Lastname" required>
+              <span class="icon left"><i class="mdi mdi-account"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Date of birth</label>
+        <div class="field-body">
+          <div class="field grouped multiline">
+            <div class="control">
+              <input type="date" name="emp_Dob">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Gender</label>
+        <div class="field-body">
+          <div class="field grouped multiline">
+            <div class="control">
+              <label class="checkbox"><input type="checkbox" value="male" name="gender_male" id="male">
+                <span class="check"></span>
+                <span class="control-label">Male</span>
+              </label>
+              <label class="checkbox"><input type="checkbox" value="female" name="gender_female" id="female">
+                <span class="check"></span>
+                <span class="control-label">Female</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Username</label>
+        <div class="field-body">
+          <div class="field grouped multiline">
+            <div class="control icons-left">
+              <input class="input" placeholder="Enter your username" name="us_username" required>
+              <span class="icon left"><i class="mdi mdi-account"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="field-body">
+          <div class="field grouped multiline">
+            <div class="control icons-left">
+              <input class="input" type="password" placeholder="Enter your password" name="us_password" required>
+              <span class="icon left"><i class="mdi mdi-account"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Password Confirm</label>
+        <div class="field-body">
+          <div class="field grouped multiline">
+            <div class="control icons-left">
+              <input class="input" type="password" placeholder="Re-enter your password"required>
+              <span class="icon left"><i class="mdi mdi-account"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field grouped">
+      <div class="control">
+        <button type="submit" class="button green">
+          Submit
+        </button>
+      </div>
+      <div class="control">
+        <button type="reset" class="button red">
+          Reset
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
 {% endblock content %}
