@@ -23,8 +23,8 @@
       <div class="card-content">
         <table>
           <thead>
-            <tr>
-              {% comment %} <th class="image-cell"></th> {% endcomment %}
+            <tr>        
+              <th>ID</th>
               <th>Username</th>
               <th>Password</th>
               <th>Employee id</th>
@@ -34,60 +34,27 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              {% comment %} 
-              <td class="image-cell">
-                <div class="image">
-                  <img
-                    src="https://avatars.dicebear.com/v2/initials/rebecca-bauch.svg"
-                    class="rounded-full"
-                  />
-                </div>
-              </td> {% endcomment %}
-              <td data-label="Name">Rebecca Bauch</td>
-              <td data-label="Company">Daugherty-Daniel</td>
-              <td data-label="City">South Cory</td>
-              <td data-label="Created">
-                <small class="text-gray-500" title="Oct 25, 2021"
-                  >Oct 25, 2021</small
-                >
-              </td>
-              <td data-label="Created">
-                <small class="text-gray-500" title="Oct 25, 2021"
-                  >Oct 25, 2021</small
-                >
-              </td>
-              <td class="actions-cell">
-                <div class="buttons right nowrap">
-                  <button
-                    class="button small green --jb-modal"
-                    data-target="sample-modal-2"
-                    type="button"
+            {% for us in users %}
+              <tr>              
+                <td data-label="us_id">{{us.id}}</td>
+                <td data-label="us_username">{{us.us_username}}</td>
+                <td data-label="us_password">{{us.us_password}}</td>
+                <td data-label="employee_id">{{us.employee_id}}</td>
+                <td data-label="Created">
+                  <small class="text-gray-500"
+                    >{{us.created_date|date:'Y-m-d'}}</small
                   >
-                    <span class="icon"><i class="mdi mdi-eye"></i></span>
-                  </button>
-                  <button
-                    class="button small red --jb-modal"
-                    data-target="sample-modal"
-                    type="button"
+                </td>
+                <td data-label="Modified">
+                  <small class="text-gray-500"
+                    >{{us.modified_date|date:'Y-m-d'}}</small
                   >
-                    <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-                  </button>
-                </div>
-              </td>
-            </tr>
+                </td>
+                
+              </tr>
+            {% endfor %}
           </tbody>
-        </table>
-        <div class="table-pagination">
-          <div class="flex items-center justify-between">
-            <div class="buttons">
-              <button type="button" class="button active">1</button>
-              <button type="button" class="button">2</button>
-              <button type="button" class="button">3</button>
-            </div>
-            <small>Page 1 of 3</small>
-          </div>
-        </div>
+        </table>        
       </div>
     </div>
   </section>

@@ -18,7 +18,7 @@ class Employee(models.Model):
 class User(models.Model):
     us_username=models.CharField(max_length=50)
     us_password=models.CharField(max_length=50)
-    emp_id=models.ForeignKey(Employee,on_delete=models.CASCADE)
+    employee=models.ForeignKey(Employee,on_delete=models.CASCADE)
     created_date=models.DateTimeField(auto_now_add=True, blank=True)
     created_by=models.IntegerField(default=0)
     modified_date=models.DateTimeField(auto_now_add=True, blank=True)

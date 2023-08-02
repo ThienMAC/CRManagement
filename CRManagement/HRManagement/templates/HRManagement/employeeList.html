@@ -1,5 +1,4 @@
 {% extends 'HRManagement/hr_main_template.html' %} {% load static %} {% block content %}
-<h3>Test</h3>
 <section class="is-hero-bar">
     <div
       class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0"
@@ -25,70 +24,67 @@
         <table>
           <thead>
             <tr>
-              {% comment %} <th class="image-cell"></th> {% endcomment %}
+              <th>ID</th>
               <th>First name</th>
               <th>Last name</th>
               <th>DoB</th>
+              <th>Gender</th>
               <th>Created date</th>
               <th>Modified date</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              {% comment %} 
-              <td class="image-cell">
-                <div class="image">
-                  <img
-                    src="https://avatars.dicebear.com/v2/initials/rebecca-bauch.svg"
-                    class="rounded-full"
-                  />
-                </div>
-              </td> {% endcomment %}
-              <td data-label="Name">Rebecca Bauch</td>
-              <td data-label="Company">Daugherty-Daniel</td>
-              <td data-label="City">South Cory</td>
+            {% for emp in employees %}
+            <tr>          
+              <td data-label="EmployeeID">{{emp.id}}</td>
+              <td data-label="EmployeeFirstName">{{emp.emp_Firstname}}</td>
+              <td data-label="EmployeeLastName">{{emp.emp_Lastname}}</td>
+              <td data-label="EmployeeDob">
+                <small class="text-gray-500"
+                  >{{emp.emp_Dob|date:'Y-m-d'}}</small
+                >
+              </td>              
+              {% if emp.emp_Gender %}
+                <td data-label="EmployeeGender">Nam</td>
+              {% else %}
+                <td data-label="EmployeeGender">Nữ</td>
+              {% endif %}
               <td data-label="Created">
-                <small class="text-gray-500" title="Oct 25, 2021"
-                  >Oct 25, 2021</small
+                <small class="text-gray-500"
+                  >{{emp.created_date}}</small
                 >
               </td>
-              <td data-label="Created">
-                <small class="text-gray-500" title="Oct 25, 2021"
-                  >Oct 25, 2021</small
+              
+              <td data-label="Modified">
+                <small class="text-gray-500"
+                  >{{emp.modified_date}}</small
                 >
               </td>
               <td class="actions-cell">
                 <div class="buttons right nowrap">
-                  <button
+                  <a
                     class="button small green --jb-modal"
                     data-target="sample-modal-2"
                     type="button"
+                    href="{% url 'employeeDetail' emp.id %}"
                   >
                     <span class="icon"><i class="mdi mdi-eye"></i></span>
-                  </button>
-                  <button
+                  </a>
+                  <a
                     class="button small red --jb-modal"
                     data-target="sample-modal"
                     type="button"
+                    href="#"
                   >
                     <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-                  </button>
+                  </a>
                 </div>
               </td>
             </tr>
+            {% endfor %}
           </tbody>
-        </table>
-        <div class="table-pagination">
-          <div class="flex items-center justify-between">
-            <div class="buttons">
-              <button type="button" class="button active">1</button>
-              <button type="button" class="button">2</button>
-              <button type="button" class="button">3</button>
-            </div>
-            <small>Page 1 of 3</small>
-          </div>
-        </div>
+        </table>        
       </div>
     </div>
   </section>

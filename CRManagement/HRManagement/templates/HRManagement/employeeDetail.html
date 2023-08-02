@@ -1,0 +1,120 @@
+{% extends 'HRManagement/hr_main_template.html' %} {% load static %} {% block content %}
+
+<div class="card-content">
+    <form method="POST">
+      {% csrf_token %}
+      <div class="field">
+        <label class="label">Update Employee</label>
+        <div class="field">
+            <label class="label">ID</label>
+            <div class="field-body">
+              <div class="field grouped multiline">
+                <div class="control icons-left">
+                  <input class="input" placeholder="Enter your first name" name="emp_Firstname" value="{{employee.id}}" required disabled>
+                  <span class="icon left"><i class="mdi mdi-account"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="field">
+          <label class="label">First name</label>
+          <div class="field-body">
+            <div class="field grouped multiline">
+              <div class="control icons-left">
+                <input class="input" placeholder="Enter your first name" name="emp_Firstname" value="{{employee.emp_Firstname}}" required>
+                <span class="icon left"><i class="mdi mdi-account"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Last name</label>
+          <div class="field-body">
+            <div class="field grouped multiline">
+              <div class="control icons-left">
+                <input class="input" placeholder="Enter your last name" name="emp_Lastname" value="{{employee.emp_Lastname}}" required>
+                <span class="icon left"><i class="mdi mdi-account"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Date of birth</label>
+          <div class="field-body">
+            <div class="field grouped multiline">
+              <div class="control">
+                <input type="date" name="emp_Dob" value="{{employee.emp_Dob|date:'Y-m-d'}}">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Gender</label>
+          <div class="field-body">
+            <div class="field grouped multiline">
+              <div class="control">
+                <label class="checkbox"><input type="checkbox" value="male" name="gender_male" id="male" 
+                    {% if employee.emp_Gender %}
+                        checked
+                    {% endif %}
+                >
+                  <span class="check"></span>
+                  <span class="control-label">Male</span>
+                </label>
+                <label class="checkbox"><input type="checkbox" value="female" name="gender_female" id="female"
+                    {% if employee.emp_Gender == 'False' %}
+                        checked    
+                    {% endif %}
+                    
+                >
+                  <span class="check"></span>
+                  <span class="control-label">Female</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Username</label>
+          <div class="field-body">
+            <div class="field grouped multiline">
+              <div class="control icons-left">
+                <input class="input" placeholder="Enter your username" name="us_username" value="{{user.us_username}}" required>
+                <span class="icon left"><i class="mdi mdi-account"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="field-body">
+            <div class="field grouped multiline">
+              <div class="control icons-left">
+                <input class="input" type="password" placeholder="Enter your password" name="us_password" value="{{user.us_password}}" required>
+                <span class="icon left"><i class="mdi mdi-account"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Password Confirm</label>
+          <div class="field-body">
+            <div class="field grouped multiline">
+              <div class="control icons-left">
+                <input class="input" type="password" placeholder="Re-enter your password"required>
+                <span class="icon left"><i class="mdi mdi-account"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field grouped">
+        <div class="control">
+          <button type="submit" class="button green">
+            Submit
+          </button>
+        </div>        
+      </div>
+    </form>
+  </div>
+{% endblock content %}
