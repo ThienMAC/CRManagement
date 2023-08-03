@@ -1,0 +1,31 @@
+{% extends 'HRManagement/hr_main_template.html' %} {% load static %} {% block content %}
+<section class="section main-section">
+    <div class="card mb-6">        
+        <div class="card-content">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="field">
+                    <label class="label"><h3>Cảnh báo</h3></label>
+                    <div class="field-body">
+                        <div class="field">
+                            <h4>Bạn có chắc muốn xóa?</h4>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="field grouped">
+                        <div class="control">
+                            <input type="submit" class="button green" value="Yes">                            
+                        </div>
+                        <div class="control">
+                            <a type="button" class="button red" href="{% url 'employeeList' %}">
+                                Cancel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

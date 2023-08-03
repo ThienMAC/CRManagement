@@ -3,6 +3,15 @@ from django.http import HttpResponse
 from .models import Employee,User
 
 # Create your views here.
+#Login -- url: ""
+def login(request):
+
+    context={
+
+    }
+    return render(request,"HRManagement/login.html",context)
+
+
 # Get all Employees -- url: .../employeeList
 def employeeList(request):
 
@@ -124,4 +133,29 @@ def employeeDetail(request, id):
 
 # Delete Employee and user for that employee -- url: ../deleteEmployee
 def deleteEmployee(request,id):
-    return HttpResponse("This is deleteEmployee for "+id)
+
+    employee=Employee.objects.get(id=id)
+    if employee is None:
+        return    
+    user=User.objects.get(employee=employee)
+    if user is None:
+        return
+    print(employee)
+    print(user)
+    context={
+        'employee':employee,
+        'user':user
+    }
+
+    if request.method=='POST':
+        print(employee)
+        print(user)
+        user.delete()
+        employee.delete()
+        return redirect("/hrmanagement/employeeList")
+    
+    
+
+    return render(request,'HRManagement/deleteEmployee.html',context)
+
+    
