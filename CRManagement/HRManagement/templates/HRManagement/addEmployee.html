@@ -70,7 +70,7 @@
         <div class="field-body">
           <div class="field grouped multiline">
             <div class="control icons-left">
-              <input class="input" type="password" placeholder="Enter your password" name="us_password" required>
+              <input class="input" type="password" placeholder="Enter your password" name="us_password" required id="password">
               <span class="icon left"><i class="mdi mdi-account"></i></span>
             </div>
           </div>
@@ -81,21 +81,22 @@
         <div class="field-body">
           <div class="field grouped multiline">
             <div class="control icons-left">
-              <input class="input" type="password" placeholder="Re-enter your password"required>
+              <input class="input" type="password" placeholder="Re-enter your password" required id="re_password">
               <span class="icon left"><i class="mdi mdi-account"></i></span>
             </div>
+            <span id="Message"></span>
           </div>
         </div>
       </div>
     </div>
     <div class="field grouped">
       <div class="control">
-        <button type="submit" class="button green">
+        <button type="submit" class="button green" id="btnAddEmployee" onclick="confirmPassword()">
           Submit
         </button>
       </div>
       <div class="control">
-        <button type="reset" class="button red">
+        <button type="reset" class="button red" id="btnResetAddEmployee">
           Reset
         </button>
       </div>
