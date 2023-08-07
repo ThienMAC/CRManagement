@@ -1,18 +1,11 @@
 from django.shortcuts import render,get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Employee,User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-#Login -- url: ""
-def login(request):
-
-    context={
-
-    }
-    return render(request,"HRManagement/login.html",context)
-
-
 # Get all Employees -- url: .../employeeList
+
 def employeeList(request):
 
     employees=Employee.objects.all()
@@ -35,6 +28,7 @@ def userList(request):
     return render(request,"HRManagement/userList.html",context)
 
 # Add Employee and Users for that employee -- url: .../addEmployee
+
 def addEmployee(request):
     if request.method=="POST":
         emp_Firstname=request.POST.get("emp_Firstname")
